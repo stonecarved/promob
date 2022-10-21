@@ -133,6 +133,7 @@ export default {
           vnum: 1,
           mnt: 5000,
           det: "",
+          cat:1
         },
         {
           id: 2,
@@ -141,6 +142,7 @@ export default {
           vnum: 1,
           mnt: 2000,
           det: "",
+          cat:1
         },
         {
           id: 3,
@@ -156,6 +158,7 @@ export default {
           vnum: 1,
           mnt: 2000,
           det: "",
+          cat:1
         },
         {
           id: 5,
@@ -172,6 +175,7 @@ export default {
           vnum: 1,
           mnt: 3000,
           det: "",
+          cat:1
         },
         {
           id: 7,
@@ -180,6 +184,7 @@ export default {
           vnum: 1,
           mnt: 3000,
           det: "",
+          cat:1
         },
       ],
     };
