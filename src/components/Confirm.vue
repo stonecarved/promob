@@ -98,7 +98,6 @@
         <div class="mt-4"></div>
         <hr />
         <div class="mt-1">
-          
           <div class="mt-2">
             <label>Date</label>
             <div class="mt-1">
@@ -113,18 +112,17 @@
             </div>
           </div>
 
-           <div class="mt-2">
+          <div class="mt-2">
             <label>Statut</label>
             <div class="mt-1">
               <b></b>
             </div>
           </div>
-
         </div>
 
         <div class="mt-4">
           <div class="mt-4">
-            <a class="my-a col-12 myorange cradius">TERMINER</a>
+            <a class="my-a col-12 myorange cradius" @click="ConfTer">TERMINER</a>
           </div>
         </div>
       </div>
@@ -157,9 +155,13 @@ export default {
     };
   },
   methods: {
-    ConfPay(){
-        this.state = 3;
-        this.$parent.TotalProducts =[];
+    ConfTer(){
+       this.$parent.ActionMenu(1);
+    },
+    ConfPay() {
+      this.state = 3;
+      this.title = "Service";
+      this.$parent.TotalProducts = [];
     },
     CheckInput(e) {
       this.inpTel = e.value;
@@ -211,11 +213,11 @@ export default {
       this.total = n;
     },
     Res(n, a) {
-      this.state = 1;
+      (this.title = "Veuillez confirmer"), (this.state = 1);
       this.stateinp = 0;
-      this.stateinp2=0;
+      this.stateinp2 = 0;
       this.inpTel = null;
-      this.check = null;    
+      this.check = null;
     },
   },
   mounted() {
