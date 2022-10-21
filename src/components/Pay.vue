@@ -27,20 +27,24 @@
             class="col-12"
             type="text"
             placeholder="Rechercher"
+            v-model="inputrec"
+            @input="MyFilter"
           />
         </span>
       </div>
-      <div v-bind:key="index" v-for="(item, index) in itemsFour">
-        <div
-          class="mt-1 col-12 md:col-4 zonetex"
-          @click="ActionPanier(item.lib.toUpperCase())"
-        >
-          <span>
-            <Button class="ciorgb">
-              <i class="pi pi-circle-fill"></i>
-            </Button>
-          </span>
-          &nbsp;<span>{{ item.lib.toUpperCase() }}</span>
+      <div class="zfour">
+        <div v-bind:key="index" v-for="(item, index) in itemsFour">
+          <div
+            class="mt-1 col-12 md:col-4 zonetex zcont"
+            @click="ActionPanier(item.lib.toUpperCase())"
+          >
+            <span>
+              <Button class="ciorgb">
+                <i class="pi pi-circle-fill"></i>
+              </Button>
+            </span>
+            &nbsp;<span>{{ item.lib.toUpperCase() }}</span>
+          </div>
         </div>
       </div>
       <div class="col-12 mt-5"></div>
@@ -116,6 +120,7 @@ export default {
       dtn: null,
       opt: [],
       vnum: 1,
+      inputrec: null,
       ProductsSelected: [],
       itemsFour: [
         { id: 1, lib: "A.G.E.P.E" },
@@ -133,7 +138,7 @@ export default {
           vnum: 1,
           mnt: 5000,
           det: "",
-          cat:1
+          cat: 1,
         },
         {
           id: 2,
@@ -142,7 +147,7 @@ export default {
           vnum: 1,
           mnt: 2000,
           det: "",
-          cat:1
+          cat: 1,
         },
         {
           id: 3,
@@ -158,7 +163,7 @@ export default {
           vnum: 1,
           mnt: 2000,
           det: "",
-          cat:1
+          cat: 1,
         },
         {
           id: 5,
@@ -175,7 +180,7 @@ export default {
           vnum: 1,
           mnt: 3000,
           det: "",
-          cat:1
+          cat: 1,
         },
         {
           id: 7,
@@ -184,12 +189,33 @@ export default {
           vnum: 1,
           mnt: 3000,
           det: "",
-          cat:1
+          cat: 1,
         },
       ],
     };
   },
   methods: {
+    MyFilter() {
+      var filter, div, tr, td;
+      filter = this.inputrec.toUpperCase();
+      div = document.getElementsByClassName("zfour")[0];
+      tr = div.getElementsByClassName("zcont");
+      for (var i = 0; i < tr.length; i++) {
+        var tds = tr[i].getElementsByTagName("span");
+        var flag = false;
+        for (var j = 0; j < tds.length; j++) {
+          var td = tds[j];
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            flag = true;
+          }
+        }
+        if (flag) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    },
     ResetInputPan() {
       this.$parent.total = 0;
       //console.log(this.ProductsSelected, this.itemsDetail);
