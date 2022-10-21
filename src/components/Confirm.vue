@@ -215,8 +215,7 @@ export default {
       this.stateinp = 0;
       this.stateinp2=0;
       this.inpTel = null;
-      this.check = null;
-      
+      this.check = null;    
     },
   },
   mounted() {
