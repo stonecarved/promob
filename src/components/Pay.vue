@@ -322,6 +322,7 @@ export default {
     },
     Res(n, a) {
       this.state = 0;
+      this.tit ="";
     },
   },
   mounted() {
